@@ -42,7 +42,7 @@ const exercises = [
   },
 ];
 
-const Index = () => {
+const Relaxation = () => {
   const [activeExercise, setActiveExercise] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -174,4 +174,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Relaxation;

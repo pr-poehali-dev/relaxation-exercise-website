@@ -7,42 +7,49 @@ import { Link } from 'react-router-dom';
 const exercises = [
   {
     id: 1,
-    title: 'Пальминг',
-    description: 'Разогрейте ладони и приложите к закрытым глазам без давления',
-    duration: 120,
-    icon: 'Hand',
+    title: 'Фокусировка на ближнем объекте',
+    description: 'Держите палец на расстоянии 15 см от глаз, фокусируйтесь на нем 10 секунд',
+    duration: 90,
+    icon: 'Target',
   },
   {
     id: 2,
-    title: 'Моргание',
-    description: 'Быстро моргайте 20 раз, затем закройте глаза на 5 секунд',
+    title: 'Упражнение "Восьмерка"',
+    description: 'Рисуйте глазами воображаемую восьмерку на расстоянии 2-3 метров',
     duration: 60,
-    icon: 'Eye',
+    icon: 'Infinity',
   },
   {
     id: 3,
-    title: 'Взгляд вдаль',
-    description: 'Смотрите на дальний объект 20 секунд, затем на ближний',
-    duration: 90,
-    icon: 'Focus',
+    title: 'Чтение с расстояния',
+    description: 'Читайте текст с разных расстояний: близко, средне, далеко',
+    duration: 120,
+    icon: 'BookOpen',
   },
   {
     id: 4,
-    title: 'Круговые движения',
-    description: 'Медленно вращайте глазами по часовой стрелке, затем против',
+    title: 'Движение по диагонали',
+    description: 'Медленно переводите взгляд из верхнего левого угла в нижний правый',
     duration: 45,
-    icon: 'Rotate3d',
+    icon: 'MoveUpRight',
   },
   {
     id: 5,
-    title: 'Массаж век',
-    description: 'Легкими движениями массируйте верхние и нижние веки',
+    title: 'Концентрация на линиях',
+    description: 'Фокусируйтесь на горизонтальных и вертикальных линиях поочередно',
+    duration: 75,
+    icon: 'Rows3',
+  },
+  {
+    id: 6,
+    title: 'Упражнение "Маятник"',
+    description: 'Плавно переводите взгляд слева направо, как маятник часов',
     duration: 60,
-    icon: 'Activity',
+    icon: 'Timer',
   },
 ];
 
-const Index = () => {
+const Astigmatism = () => {
   const [activeExercise, setActiveExercise] = useState<number | null>(null);
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -75,7 +82,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20">
+    <div className="min-h-screen bg-gradient-to-br from-secondary/20 via-accent/20 to-primary/20">
       <nav className="bg-white/80 backdrop-blur-md border-b border-border sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
@@ -99,10 +106,10 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="font-heading text-5xl font-bold text-primary-foreground mb-4">
-            Упражнения на расслабление глаз
+            Упражнения от астигматизма
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Комплекс упражнений для снятия усталости и напряжения глаз после работы за компьютером
+            Специальный комплекс для коррекции астигматизма и улучшения четкости зрения
           </p>
         </div>
 
@@ -114,8 +121,8 @@ const Index = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader>
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                  <Icon name={exercise.icon as any} size={24} className="text-primary-foreground" />
+                <div className="w-12 h-12 rounded-full bg-secondary/30 flex items-center justify-center mb-4">
+                  <Icon name={exercise.icon as any} size={24} className="text-secondary-foreground" />
                 </div>
                 <CardTitle className="font-heading text-xl">{exercise.title}</CardTitle>
                 <CardDescription className="text-base">{exercise.description}</CardDescription>
@@ -141,7 +148,7 @@ const Index = () => {
                 ) : (
                   <Button 
                     onClick={() => startExercise(exercise)} 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
                     disabled={activeExercise !== null}
                   >
                     <Icon name="Play" size={16} className="mr-2" />
@@ -154,18 +161,18 @@ const Index = () => {
         </div>
 
         <div className="mt-16 max-w-3xl mx-auto">
-          <Card className="bg-secondary/30 border-2">
+          <Card className="bg-accent/30 border-2">
             <CardHeader>
               <CardTitle className="font-heading text-2xl flex items-center gap-2">
-                <Icon name="Lightbulb" size={24} className="text-secondary-foreground" />
-                Рекомендации
+                <Icon name="Info" size={24} className="text-accent-foreground" />
+                Важная информация
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-muted-foreground">
-              <p>• Выполняйте упражнения каждые 2 часа работы за компьютером</p>
-              <p>• Старайтесь делать упражнения в спокойной обстановке</p>
-              <p>• Не напрягайте глаза во время выполнения</p>
-              <p>• При дискомфорте прекратите упражнение</p>
+              <p>• Упражнения не заменяют лечение, назначенное врачом</p>
+              <p>• Регулярность важнее интенсивности - выполняйте ежедневно</p>
+              <p>• Первые результаты можно заметить через 2-3 недели</p>
+              <p>• При ухудшении зрения обратитесь к офтальмологу</p>
             </CardContent>
           </Card>
         </div>
@@ -174,4 +181,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Astigmatism;
